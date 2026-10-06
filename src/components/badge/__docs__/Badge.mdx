@@ -1,0 +1,39 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as BadgeStories from "./Badge.stories";
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+Static status badge. Surfaces map to Figma tokens `SurfaceHigh`, `SurfacePositive`, and `SurfaceNegative`. Text always uses `OnNeutral` with typography `body-s` at weight `700`.
+
+Size is **viewport-driven** (no `size` / `mobile` prop):
+
+- Desktop (`min-width: 769px`): height 26px, padding `3XS`/`2XS`, radius 12px
+- Mobile (`max-width: 768px`): height 22px, padding `4XS`/`3XS`, radius 8px
+
+#### Example
+
+<Canvas of={BadgeStories.Neutral} />
+
+<Controls />
+
+## Usage
+
+```tsx
+import { Badge, ThemeProvider } from "component-library";
+
+export function Example() {
+  return (
+    <ThemeProvider>
+      <Badge variant="Positive">New</Badge>
+    </ThemeProvider>
+  );
+}
+```
+
+## Props
+
+- **children** — Badge label content
+- **variant** — `"Neutral"` | `"Positive"` | `"Negative"` (default `"Neutral"`)
+- Native `span` attributes are forwarded (`id`, `aria-*`, etc.)

@@ -1,0 +1,53 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as TokensStories from "./Tokens.stories";
+
+<Meta of={TokensStories} />
+
+# Design Tokens
+
+Figma is the absolute source of truth. Semantic and component layers only alias these values.
+
+| Layer | Contents |
+| --- | --- |
+| Color | `SurfaceHigh`, `Inverse`, `Outline`, `OnNeutral`, … |
+| Spacing | `0` … `2XL` with `{ px, rem }` |
+| Typography | `body-m`, `body-s` (Inter) |
+| Semantic | Intent aliases → Figma colors |
+| Component | Button / Badge / Tabs maps |
+
+## Color
+
+<Canvas of={TokensStories.Color} />
+
+## Spacing
+
+<Canvas of={TokensStories.Spacing} />
+
+## Typography
+
+<Canvas of={TokensStories.Typography} />
+
+## Semantic
+
+<Canvas of={TokensStories.Semantic} />
+
+## Component
+
+<Canvas of={TokensStories.Component} />
+
+## Usage
+
+```ts
+import {
+  colorTokensDefinition,
+  spacingTokensDefinition,
+  spacingCss,
+  typographyTokensDefinition,
+  tokens,
+} from "component-library";
+
+colorTokensDefinition.Inverse;
+spacingCss("S"); // "1rem"
+typographyTokensDefinition["body-m"];
+tokens.component.button.variant.primary.background;
+```

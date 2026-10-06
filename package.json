@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
+    "lint": "eslint . --fix",
     "preview": "vite preview",
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
     "test": "vitest run",
@@ -21,17 +21,16 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "dependencies": {
-    "react-dom": "^19.1.1"
-  },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@mdx-js/react": "^3.1.1",
+    "@storybook/addon-a11y": "^9.1.8",
     "@storybook/addon-docs": "^9.1.8",
-    "@storybook/addon-onboarding": "^9.1.8",
     "@storybook/react-vite": "^9.1.8",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/jest-axe": "^3.5.9",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@typescript-eslint/eslint-plugin": "^8.45.0",
@@ -46,9 +45,11 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "eslint-plugin-storybook": "^9.1.8",
     "globals": "^16.4.0",
+    "jest-axe": "^10.0.0",
     "jsdom": "^27.0.0",
     "prettier": "^3.6.2",
     "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "storybook": "^9.1.8",
     "styled-components": "^6.1.19",
     "typescript": "~5.8.3",
@@ -58,9 +59,11 @@
     "vitest": "^3.2.4"
   },
   "peerDependencies": {
-    "react": "^19.1.1"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "styled-components": "^6.1.19"
   },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "description": "React + TypeScript design system component library (CSS-in-JS, no Tailwind).",
   "keywords": [],
   "author": "",
   "license": "ISC"

@@ -1,12 +1,13 @@
-import React, { FC } from "react";
-import Button, { ButtonProps } from "../Button";
+import type { FC } from "react";
+import Button, { type ButtonProps } from "../Button";
 
 const Example: FC<ButtonProps> = ({
   disabled = false,
-  onClick = () => {},
-  primary = true,
-  size = "small",
-  text = "Button",
+  onClick,
+  variant = "primary",
+  size = "medium",
+  children = "Button",
+  ...rest
 }) => {
   return (
     <div
@@ -15,15 +16,18 @@ const Example: FC<ButtonProps> = ({
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
+        gap: "16px",
       }}
     >
       <Button
         size={size}
-        text={text}
         disabled={disabled}
         onClick={onClick}
-        primary={primary}
-      />
+        variant={variant}
+        {...rest}
+      >
+        {children}
+      </Button>
     </div>
   );
 };
