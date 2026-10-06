@@ -6,10 +6,6 @@ import {
 } from "./typography";
 import { semantic } from "./semantic";
 
-/**
- * Component tokens — scoped maps using only Figma-backed semantic/primitive values.
- */
-
 export const buttonTokens = {
   radius: spacingTokensDefinition["3XS"].rem,
   fontFamily: typographyTokensDefinition["body-m"].fontFamily,
@@ -65,14 +61,12 @@ export const badgeTokens = {
     paddingY: spacingTokensDefinition["3XS"].rem,
     paddingX: spacingTokensDefinition["2XS"].rem,
     height: spacingTokensDefinition.BadgeDesktopHeight.rem,
-    /** Figma Desktop radius 12px (= spacing XS). */
     radius: spacingTokensDefinition.XS.rem,
   },
   mobile: {
     paddingY: spacingTokensDefinition["4XS"].rem,
     paddingX: spacingTokensDefinition["3XS"].rem,
     height: spacingTokensDefinition.BadgeMobileHeight.rem,
-    /** Figma Mobile radius 8px (= spacing 2XS). */
     radius: spacingTokensDefinition["2XS"].rem,
   },
   variant: {
@@ -98,7 +92,6 @@ export const tabsTokens = {
   focusRingOffset: spacingTokensDefinition["3XS"].rem,
   desktop: {
     height: spacingTokensDefinition.TabDesktopHeight.rem,
-    /** Gap between label and badge inside a Tab item. */
     itemGap: spacingTokensDefinition["2XS"].rem,
   },
   mobile: {

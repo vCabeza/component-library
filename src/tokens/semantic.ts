@@ -2,10 +2,6 @@ import { colorTokensDefinition } from "./color";
 import { spacingTokensDefinition } from "./spacing";
 import { typographyTokensDefinition } from "./typography";
 
-/**
- * Semantic aliases — intent names mapped only to Figma color/spacing/type tokens.
- */
-
 export const semanticColor = {
   text: {
     primary: colorTokensDefinition.OnNeutral,

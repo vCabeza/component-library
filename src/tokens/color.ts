@@ -8,11 +8,11 @@ export const colorTokensDefinition = {
   SurfaceHover: "#F6F6FA",
   SurfaceActive: "#F1F1F7",
   Outline: "#D3D3DC",
-  /** Figma Tab Pill unselected hover border / Underline hover indicator */
+  /** Tab Pill unselected hover border / Underline hover indicator (Figma). */
   OutlineHover: "#C4C5CF",
   OnNeutral: "#1B2134",
   OnInverse: "#FFFFFF",
-  /** Figma Tab Pill unselected focus-ring */
+  /** Tab Pill unselected focus-ring (Figma). */
   Black: "#000000",
 } as const;
 

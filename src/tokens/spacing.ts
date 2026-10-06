@@ -7,17 +7,13 @@ export const spacingTokensDefinition = {
   "2XS": { px: 8, rem: "0.5rem" },
   XS: { px: 12, rem: "0.75rem" },
   S: { px: 16, rem: "1rem" },
-  /** Badge mobile height (Figma Mobile=True). */
   BadgeMobileHeight: { px: 22, rem: "1.375rem" },
   M: { px: 20, rem: "1.25rem" },
   L: { px: 24, rem: "1.5rem" },
-  /** Badge desktop height (Figma Mobile=False). */
   BadgeDesktopHeight: { px: 26, rem: "1.625rem" },
   XL: { px: 32, rem: "2rem" },
-  /** Tab mobile height (Figma Mobile=True). */
   TabMobileHeight: { px: 42, rem: "2.625rem" },
   "2XL": { px: 48, rem: "3rem" },
-  /** Tab desktop height (Figma Mobile=False). */
   TabDesktopHeight: { px: 50, rem: "3.125rem" },
   /** Pill tab border-radius (Figma 100px). */
   Pill: { px: 100, rem: "6.25rem" },
@@ -44,7 +40,6 @@ export const spacingTokenOrder = [
   "Pill",
 ] as const satisfies ReadonlyArray<SpacingToken>;
 
-/** Prefer rem for CSS consumption. */
 export function spacingCss(token: SpacingToken): string {
   return spacingTokensDefinition[token].rem;
 }

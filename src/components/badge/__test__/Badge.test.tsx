@@ -56,6 +56,23 @@ describe("Badge", () => {
     expect(theme.component.badge.mobile.height).toBe("1.375rem");
   });
 
+  it("applies accessibilityLabel and optional live status role", () => {
+    renderWithTheme(
+      <Badge variant="Negative" accessibilityLabel="3 errors" live>
+        3
+      </Badge>,
+    );
+    const badge = screen.getByRole("status", { name: "3 errors" });
+    expect(badge).toHaveAttribute("aria-live", "polite");
+    expect(badge).toHaveAttribute("data-variant", "Negative");
+  });
+
+  it("does not expose status role by default", () => {
+    renderWithTheme(<Badge>Static</Badge>);
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    expect(screen.getByText("Static")).toBeInTheDocument();
+  });
+
   it("has no serious accessibility violations", async () => {
     const { container } = renderWithTheme(
       <Badge variant="Neutral">Accessible</Badge>,

@@ -4,13 +4,24 @@ import {
   type ReactNode,
 } from "react";
 import styled, { css } from "styled-components";
+import { forcedColorsChrome } from "../../utils/a11y";
 
 export type BadgeVariant = "Neutral" | "Positive" | "Negative";
 
 export type BadgeProps = {
   children: ReactNode;
   variant?: BadgeVariant;
-} & Omit<HTMLAttributes<HTMLSpanElement>, "children" | "color">;
+  /**
+   * Optional accessible name when visible text alone is not enough
+   * (e.g. color conveys meaning).
+   */
+  accessibilityLabel?: string;
+  /**
+   * When true: `role="status"` + `aria-live="polite"`.
+   * Default false so static badges (e.g. inside Tab) stay quiet.
+   */
+  live?: boolean;
+} & Omit<HTMLAttributes<HTMLSpanElement>, "children" | "color" | "role">;
 
 type StyledBadgeProps = {
   $variant: BadgeVariant;
@@ -42,15 +53,14 @@ const StyledBadge = styled.span<StyledBadgeProps>`
   font-weight: ${({ theme }) => theme.component.badge.fontWeight};
   white-space: nowrap;
 
-  /* Desktop (Mobile=False) — default */
   height: ${({ theme }) => theme.component.badge.desktop.height};
   padding: ${({ theme }) =>
     `${theme.component.badge.desktop.paddingY} ${theme.component.badge.desktop.paddingX}`};
   border-radius: ${({ theme }) => theme.component.badge.desktop.radius};
 
   ${variantStyles}
+  ${forcedColorsChrome}
 
-  /* Mobile (Mobile=True) */
   @media (max-width: 768px) {
     height: ${({ theme }) => theme.component.badge.mobile.height};
     padding: ${({ theme }) =>
@@ -60,7 +70,13 @@ const StyledBadge = styled.span<StyledBadgeProps>`
 `;
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
-  { children, variant = "Neutral", ...rest },
+  {
+    children,
+    variant = "Neutral",
+    accessibilityLabel,
+    live = false,
+    ...rest
+  },
   ref,
 ) {
   return (
@@ -69,6 +85,12 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       $variant={variant}
       data-variant={variant}
       {...rest}
+      {...(accessibilityLabel != null
+        ? { "aria-label": accessibilityLabel }
+        : {})}
+      {...(live
+        ? { role: "status" as const, "aria-live": "polite" as const }
+        : {})}
     >
       {children}
     </StyledBadge>

@@ -6,7 +6,6 @@ function AllProviders({ children }: { children: ReactNode }) {
   return <ThemeProvider>{children}</ThemeProvider>;
 }
 
-/** Test helper — wraps UI with the design-system ThemeProvider. */
 export function renderWithTheme(
   ui: ReactElement,
   options?: Omit<RenderOptions, "wrapper">,

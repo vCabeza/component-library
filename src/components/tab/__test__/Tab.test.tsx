@@ -206,6 +206,20 @@ describe("Tab", () => {
     expect(screen.getByRole("tab", { name: "Two" })).toHaveFocus();
   });
 
+  it("exposes native disabled state with semantic disabled tokens", () => {
+    renderWithTheme(
+      <Tab id="x" disabled>
+        Disabled
+      </Tab>,
+    );
+    const tab = screen.getByRole("tab", { name: "Disabled" });
+    expect(tab).toBeDisabled();
+    expect(tab).toHaveStyle({
+      color: theme.color.disabled.foreground,
+      backgroundColor: theme.color.disabled.background,
+    });
+  });
+
   it("has no serious accessibility violations", async () => {
     const { container } = renderWithTheme(
       <Tabs defaultSelectedKey="a" aria-label="Demo">

@@ -7,6 +7,8 @@ import * as ButtonStories from "./Button.stories";
 
 Reference interactive component for this design system. Styles come from theme tokens; no hardcoded colors.
 
+Supports `:focus-visible` rings, native `disabled`, and `@media (forced-colors: active)` adaptations. The default focus ring uses Figma `Outline` (documented contrast gap vs 3:1 UI AA — not overridden).
+
 #### Example
 
 <Canvas of={ButtonStories.Primary} />
@@ -37,3 +39,5 @@ export function Example() {
 - **disabled** — Disables interaction and applies disabled tokens.
 - **onClick** — Click handler (`MouseEventHandler<HTMLButtonElement>`).
 - Native `button` attributes are forwarded (e.g. `type`, `aria-*`).
+
+See **Foundations / Accessibility** for contrast gaps, target-size notes, and AT checklist.

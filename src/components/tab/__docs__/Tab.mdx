@@ -7,8 +7,10 @@ import * as TabStories from "./Tab.stories";
 
 Standalone raw `<button type="button" role="tab">` — always in the sequential tab order (`tabIndex={0}`) unless disabled or an explicit `tabIndex` is passed. Inside `<Tabs>`, every enabled tab stays Tab-key reachable; arrows / Home / End change selection from the focused tab.
 
+Disabled tabs use the native `disabled` attribute and semantic disabled color tokens (Figma-mapped). Forced-colors mode is supported.
+
 <Canvas of={TabStories.PillSelected} />
 
 <Controls />
 
-For composed usage see **Tabs** stories.
+For composed usage and the full keyboard model see **Tabs** and **Foundations / Accessibility**.

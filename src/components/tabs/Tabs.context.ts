@@ -3,9 +3,6 @@ import type { TabsContextValue } from "./Tabs.types";
 
 export const TabsContext = createContext<TabsContextValue | null>(null);
 
-/**
- * Required Tabs context — throws when used outside `<Tabs>`.
- */
 export function useTabsContext(): TabsContextValue {
   const context = useContext(TabsContext);
   if (!context) {
@@ -14,9 +11,7 @@ export function useTabsContext(): TabsContextValue {
   return context;
 }
 
-/**
- * Optional Tabs context — returns `null` when Tab/consumers are used standalone.
- */
+/** Returns `null` when used outside `<Tabs>` (standalone Tab). */
 export function useOptionalTabsContext(): TabsContextValue | null {
   return useContext(TabsContext);
 }

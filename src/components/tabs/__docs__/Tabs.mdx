@@ -9,6 +9,8 @@ Raw compound tabs: `Tabs` + `TabList` + `Tab` + `TabPanel`. Selection is control
 
 **Keyboard:** Tab / Shift+Tab move focus across every tab, then into the active panel. Enter or Space selects the focused tab. ArrowLeft/Right (also Up/Down), Home, and End move focus and selection. If no `selectedKey` / `defaultSelectedKey` is set, the first enabled tab is selected.
 
+`TabList` exposes `aria-orientation="horizontal"`. This is a **manual Tab-order** model (all enabled tabs focusable) with arrow-key selection — not APG roving tabindex. See **Foundations / Accessibility**.
+
 <Canvas of={TabsStories.Pill} />
 
 <Controls />

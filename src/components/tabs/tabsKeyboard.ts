@@ -6,10 +6,6 @@ export function getEnabledTabs(list: HTMLElement): HTMLButtonElement[] {
   );
 }
 
-/**
- * WAI-ARIA Tabs keyboard support (horizontal tablist).
- * Moves focus and returns the tab that should become selected, if any.
- */
 export function getTabToSelectOnKeyDown(
   event: ReactKeyboardEvent<HTMLElement>,
   list: HTMLElement,

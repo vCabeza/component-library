@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import type { TabVariant } from "./Tab.types";
+import { forcedColorsInteractive } from "../../utils/a11y";
 
 export type StyledTabProps = {
   $variant: TabVariant;
@@ -142,7 +143,6 @@ export const StyledTab = styled.button<StyledTabProps>`
   font-weight: ${({ theme }) => theme.component.tabs.fontWeight};
   white-space: nowrap;
 
-  /* Desktop defaults (> 768px) */
   height: ${({ theme }) => theme.component.tabs.desktop.height};
   gap: ${({ theme }) => theme.component.tabs.desktop.itemGap};
   border-radius: ${({ theme, $variant }) =>
@@ -161,9 +161,19 @@ export const StyledTab = styled.button<StyledTabProps>`
 
   &:disabled {
     cursor: not-allowed;
+    color: ${({ theme }) => theme.color.disabled.foreground};
+    background-color: ${({ theme }) => theme.color.disabled.background};
+    border-color: ${({ theme }) => theme.color.disabled.border};
+    border-style: solid;
+    border-width: 1px;
+
+    &::after {
+      background-color: transparent;
+    }
   }
 
-  /* Mobile (<= 768px) */
+  ${forcedColorsInteractive}
+
   @media (max-width: 768px) {
     height: ${({ theme }) => theme.component.tabs.mobile.height};
     gap: ${({ theme }) => theme.component.tabs.mobile.itemGap};
@@ -180,8 +190,7 @@ export const TabLabel = styled.span`
 `;
 
 /**
- * Chrome for badge content inside Tab.
- * Isolates text color from Tab label color (e.g. Pill selected = OnInverse),
+ * Isolates badge text color from Tab label color (Pill selected = OnInverse)
  * so badge copy stays OnNeutral on SurfaceHigh in every interactive state.
  */
 export const TabBadgeSlot = styled.span`
@@ -195,7 +204,6 @@ export const TabBadgeSlot = styled.span`
     `${theme.component.tabs.badgeSlot.paddingY} ${theme.component.tabs.badgeSlot.paddingX}`};
   border-radius: ${({ theme }) => theme.component.tabs.badgeSlot.radius};
 
-  /* Prevent Tab :hover/:active/:focus-visible color from leaking into Badge */
   &,
   & * {
     color: ${({ theme }) => theme.component.tabs.badgeSlot.foreground};

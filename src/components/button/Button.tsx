@@ -5,7 +5,7 @@ import {
   type ReactNode,
 } from "react";
 import styled, { css } from "styled-components";
-import { focusVisibleRing } from "../../utils/a11y";
+import { focusVisibleRing, forcedColorsInteractive } from "../../utils/a11y";
 
 export type ButtonVariant = "primary" | "secondary";
 export type ButtonSize = "small" | "medium" | "large";
@@ -73,6 +73,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       offset: theme.component.button.focusRingOffset,
       color: theme.component.button.focusRingColor,
     })}
+  ${forcedColorsInteractive}
 
   &:disabled {
     cursor: not-allowed;

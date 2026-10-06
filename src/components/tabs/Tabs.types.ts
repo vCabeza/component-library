@@ -1,17 +1,12 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-/** Visual variants for Tabs / Tab — Figma: Pill | Underline. */
 export type TabsVariant = "Pill" | "Underline";
 
 export type TabsProps = {
   children: ReactNode;
-  /** Visual variant shared with Tab children via context. Default: `"Pill"`. */
   variant?: TabsVariant;
-  /** Controlled selected tab key (matches `Tab` / `TabPanel` `id`). */
   selectedKey?: string;
-  /** Uncontrolled initial selected tab key. */
   defaultSelectedKey?: string;
-  /** Called when selection changes. */
   onSelectionChange?: (key: string) => void;
   className?: string;
   "aria-label"?: string;
@@ -27,7 +22,7 @@ export type TabListProps = {
 } & Omit<HTMLAttributes<HTMLDivElement>, "children" | "color" | "role">;
 
 export type TabPanelProps = {
-  /** Selection key — must match the corresponding `Tab` `id`. */
+  /** Must match the corresponding `Tab` `id`. */
   id: string;
   children: ReactNode;
   className?: string;

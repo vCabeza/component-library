@@ -31,12 +31,6 @@ function resolveVariant(
   return propVariant ?? contextVariant ?? "Pill";
 }
 
-/**
- * Standalone: always in sequential tab order.
- * Inside Tabs: all enabled tabs stay in tab order so Tab/Shift+Tab can reach
- * every tab; Arrow/Home/End still move selection (see TabList / onKeyDown).
- * Explicit `tabIndex` from props always wins.
- */
 function resolveTabIndex({
   tabIndexProp,
   disabled,
@@ -53,10 +47,6 @@ function resolveTabIndex({
   return 0;
 }
 
-/**
- * Design-system Tab — raw HTML button with native ARIA tab semantics.
- * Mirrors Button patterns: styled-components, theme tokens, forwardRef, transient props.
- */
 export const Tab = forwardRef<HTMLButtonElement, TabProps>(function Tab(
   {
     id,

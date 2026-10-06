@@ -171,6 +171,14 @@ describe("Tabs", () => {
     );
   });
 
+  it("sets aria-orientation horizontal on the tablist", () => {
+    renderWithTheme(<Demo />);
+    expect(screen.getByRole("tablist")).toHaveAttribute(
+      "aria-orientation",
+      "horizontal",
+    );
+  });
+
   it("has no serious accessibility violations", async () => {
     const { container } = renderWithTheme(<Demo />);
     expect(await axe(container)).toHaveNoViolations();

@@ -12,6 +12,8 @@ Size is **viewport-driven** (no `size` / `mobile` prop):
 - Desktop (`min-width: 769px`): height 26px, padding `3XS`/`2XS`, radius 12px
 - Mobile (`max-width: 768px`): height 22px, padding `4XS`/`3XS`, radius 8px
 
+Prefer clear visible labels so Positive/Negative meaning is not hue-only. For numeric or ambiguous chips, use `accessibilityLabel` (and `live` only for dynamic status updates).
+
 #### Example
 
 <Canvas of={BadgeStories.Neutral} />
@@ -27,6 +29,9 @@ export function Example() {
   return (
     <ThemeProvider>
       <Badge variant="Positive">New</Badge>
+      <Badge variant="Negative" accessibilityLabel="3 errors" live>
+        3
+      </Badge>
     </ThemeProvider>
   );
 }
@@ -36,4 +41,8 @@ export function Example() {
 
 - **children** — Badge label content
 - **variant** — `"Neutral"` | `"Positive"` | `"Negative"` (default `"Neutral"`)
+- **accessibilityLabel** — optional `aria-label` when visible text is insufficient
+- **live** — when `true`, `role="status"` + `aria-live="polite"` (default `false`)
 - Native `span` attributes are forwarded (`id`, `aria-*`, etc.)
+
+See **Foundations / Accessibility** for Figma gaps (`body-s`, mobile height) and AT checklist.

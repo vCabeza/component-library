@@ -1,0 +1,73 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import * as AccessibilityStories from "./Accessibility.stories";
+
+<Meta of={AccessibilityStories} />
+
+# Accessibility
+
+Figma-first policy: visual tokens from Figma are not overridden for contrast or target size. Gaps are measured in tests and listed here.
+
+## Components covered
+
+- **Button** — native `<button>`, `:focus-visible` ring, disabled state, `forced-colors`
+- **Badge** — static chrome by default; optional `accessibilityLabel` / `live`
+- **Tab / Tabs** — `tablist` / `tab` / `tabpanel`, keyboard support, `aria-orientation="horizontal"`
+
+## Tabs keyboard model
+
+Activation is **manual for Tab-key focus** (every enabled tab stays in the sequential tab order) with **automatic selection on arrow keys**:
+
+| Key | Behavior |
+|-----|----------|
+| Tab / Shift+Tab | Move focus across tabs, then into the active panel |
+| Enter / Space | Select the focused tab (native button activation) |
+| ArrowLeft / ArrowRight (also Up / Down) | Move focus and selection |
+| Home / End | First / last enabled tab |
+
+This differs from the WAI-ARIA APG “roving tabindex + automatic activation” default (only the selected tab in tab order). Document this for consumers; do not invent a second API.
+
+`TabList` sets `aria-orientation="horizontal"`.
+
+## Badge and color meaning
+
+Positive / Negative variants use Figma surface colors. Prefer **clear visible text** so meaning is not hue-only. When the visible label is insufficient (e.g. a numeric chip):
+
+```tsx
+<Badge variant="Negative" accessibilityLabel="3 errors" live>
+  3
+</Badge>
+```
+
+- `accessibilityLabel` → `aria-label`
+- `live` → `role="status"` + `aria-live="polite"` (opt-in; default off so badges inside Tabs stay quiet)
+
+No decorative icons are invented beyond Figma.
+
+## Forced colors
+
+Button, Tab, and Badge adapt under `@media (forced-colors: active)` using system colors (`ButtonText`, `ButtonFace`, `Canvas`, `Highlight`, …) — no new hex tokens.
+
+## Known Figma gaps (not overridden)
+
+Measured by `src/utils/__test__/contrast.test.ts`:
+
+| Item | Gap |
+|------|-----|
+| Button / default focus ring (`Outline` on white / SurfaceHigh) | Below 3:1 non-text contrast (~1.49:1 on white) |
+| Badge mobile height (`BadgeMobileHeight` 22px) | Below 24×24 CSS px target guidance (Badge is non-interactive) |
+| Typography `body-s` (`0.75rem`) | Small by default; consumers own zoom / rem root |
+| Focus ring width | 2px (`4XS`) from Figma — not enlarged for supplemental size rules |
+
+Text pairs for Button primary/secondary, Badge variants, and Tab Pill selected generally meet 4.5:1 in the matrix; re-run the test suite after token updates.
+
+## Manual AT checklist
+
+Smoke-test in **VoiceOver (macOS/iOS)** and **NVDA (Windows)** when changing interactive components:
+
+- [ ] Button: name, disabled announced, focus ring visible with keyboard
+- [ ] Tabs: tablist name; selected tab announced; arrows change selection; Tab reaches each tab then panel
+- [ ] Tab disabled: skipped / announced as unavailable
+- [ ] Badge with `live`: status update announced once; without `live`: not treated as live region
+- [ ] Forced colors / Windows High Contrast: controls remain distinguishable
+
+Automated coverage: `jest-axe` on Button, Badge, Tab, Tabs + Storybook addon-a11y (`a11y.test: "error"`).

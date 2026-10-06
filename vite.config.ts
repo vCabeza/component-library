@@ -4,7 +4,6 @@ import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import { peerDependencies } from "./package.json";
 
-// https://vite.dev/config/
 export default defineConfig({
   test: {
     globals: true,
@@ -13,16 +12,16 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: "./src/index.ts", // Specifies the entry point for building the library.
+      entry: "./src/index.ts",
       name: "component-library",
-      fileName: (format) => `index.${format}.js`, // Generates the output file name based on the format.
-      formats: ["cjs", "es"], // Specifies the output formats (CommonJS and ES modules).
+      fileName: (format) => `index.${format}.js`,
+      formats: ["cjs", "es"],
     },
     rollupOptions: {
-      external: [...Object.keys(peerDependencies)], // Defines external dependencies for Rollup bundling.
+      external: [...Object.keys(peerDependencies)],
     },
-    sourcemap: true, // Generates source maps for debugging.
-    emptyOutDir: true, // Clears the output directory before building.
+    sourcemap: true,
+    emptyOutDir: true,
   },
   plugins: [
     react({

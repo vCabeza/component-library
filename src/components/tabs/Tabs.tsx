@@ -89,10 +89,6 @@ export const TabList = forwardRef<HTMLDivElement, TabListProps>(
       [ref],
     );
 
-    /**
-     * If nothing is selected yet, select the first enabled tab so a panel
-     * is visible and aria-selected is consistent.
-     */
     useLayoutEffect(() => {
       if (selectedKey != null) return;
       const list = listRef.current;
@@ -110,8 +106,7 @@ export const TabList = forwardRef<HTMLDivElement, TabListProps>(
       const list = listRef.current;
       if (!list) return;
 
-      // Prefer Tab's own handler when a tab is focused; this is a fallback
-      // (e.g. focus landed on the list chrome).
+      // Fallback when focus is not on a Tab (Tab handlers run first via bubbling + preventDefault).
       const next = getTabToSelectOnKeyDown(event, list);
       if (!next?.id) return;
 
@@ -125,6 +120,7 @@ export const TabList = forwardRef<HTMLDivElement, TabListProps>(
         role="tablist"
         className={className}
         aria-label={ariaLabelProp ?? ariaLabelCtx}
+        aria-orientation="horizontal"
         data-variant={variant}
         data-selected-key={selectedKey}
         $variant={variant}
