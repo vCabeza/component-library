@@ -293,27 +293,41 @@ export function ComponentTokensView() {
         </div>
       </Section>
 
-      <Section title="Component — Tabs (placeholder)">
+      <Section title="Component — Tabs">
         <div style={gridStyle}>
           <TokenCard
-            name="tabs.tab.color"
-            value={component.tabs.tab.color}
-            preview={<ColorSwatch value={component.tabs.tab.color} />}
+            name="tabs.pill.selected.background"
+            value={component.tabs.pill.selected.background}
+            preview={
+              <ColorSwatch value={component.tabs.pill.selected.background} />
+            }
           />
           <TokenCard
-            name="tabs.tab.colorSelected"
-            value={component.tabs.tab.colorSelected}
-            preview={<ColorSwatch value={component.tabs.tab.colorSelected} />}
+            name="tabs.pill.unselected.border"
+            value={component.tabs.pill.unselected.border}
+            preview={
+              <ColorSwatch value={component.tabs.pill.unselected.border} />
+            }
           />
           <TokenCard
-            name="tabs.tab.indicatorColor"
-            value={component.tabs.tab.indicatorColor}
-            preview={<ColorSwatch value={component.tabs.tab.indicatorColor} />}
+            name="tabs.underline.indicator.selected"
+            value={component.tabs.underline.indicator.selected}
+            preview={
+              <ColorSwatch
+                value={component.tabs.underline.indicator.selected}
+              />
+            }
           />
           <TokenCard
-            name="tabs.listBorderColor"
-            value={component.tabs.listBorderColor}
-            preview={<ColorSwatch value={component.tabs.listBorderColor} />}
+            name="tabs.underline.indicator.unselectedInteractive"
+            value={component.tabs.underline.indicator.unselectedInteractive}
+            preview={
+              <ColorSwatch
+                value={
+                  component.tabs.underline.indicator.unselectedInteractive
+                }
+              />
+            }
           />
         </div>
       </Section>

@@ -1,0 +1,31 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as TabsStories from "./Tabs.stories";
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+Raw compound tabs: `Tabs` + `TabList` + `Tab` + `TabPanel`. Selection is controlled or uncontrolled.
+
+**Keyboard:** Tab / Shift+Tab move focus across every tab, then into the active panel. Enter or Space selects the focused tab. ArrowLeft/Right (also Up/Down), Home, and End move focus and selection. If no `selectedKey` / `defaultSelectedKey` is set, the first enabled tab is selected.
+
+<Canvas of={TabsStories.Pill} />
+
+<Controls />
+
+## Usage
+
+```tsx
+import { Tabs, TabList, TabPanel, Tab, ThemeProvider } from "component-library";
+
+<ThemeProvider>
+  <Tabs variant="Pill" defaultSelectedKey="overview" aria-label="Sections">
+    <TabList>
+      <Tab id="overview">Overview</Tab>
+      <Tab id="details">Details</Tab>
+    </TabList>
+    <TabPanel id="overview">…</TabPanel>
+    <TabPanel id="details">…</TabPanel>
+  </Tabs>
+</ThemeProvider>
+```

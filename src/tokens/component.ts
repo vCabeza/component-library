@@ -92,23 +92,85 @@ export const badgeTokens = {
 } as const;
 
 export const tabsTokens = {
-  gap: spacingTokensDefinition["2XS"].rem,
-  listBorderColor: colorTokensDefinition.Outline,
-  listBorderWidth: spacingTokensDefinition["4XS"].rem,
-  tab: {
-    typography: typographyTokensDefinition["body-m"],
-    paddingY: spacingTokensDefinition.XS.rem,
-    paddingX: spacingTokensDefinition.S.rem,
-    color: colorTokensDefinition.InverseActive,
-    colorHover: colorTokensDefinition.OnNeutral,
-    colorSelected: colorTokensDefinition.Inverse,
-    colorDisabled: colorTokensDefinition.InverseActive,
-    indicatorColor: colorTokensDefinition.Inverse,
-    indicatorHeight: spacingTokensDefinition["4XS"].rem,
-    focusRingColor: colorTokensDefinition.Outline,
-    focusRingWidth: spacingTokensDefinition["4XS"].rem,
-    focusRingOffset: spacingTokensDefinition["3XS"].rem,
-    surfaceHover: colorTokensDefinition.SurfaceHover,
+  typography: typographyTokensDefinition["body-m"],
+  fontWeight: fontWeightTokensDefinition.bold,
+  focusRingWidth: spacingTokensDefinition["4XS"].rem,
+  focusRingOffset: spacingTokensDefinition["3XS"].rem,
+  desktop: {
+    height: spacingTokensDefinition.TabDesktopHeight.rem,
+    /** Gap between label and badge inside a Tab item. */
+    itemGap: spacingTokensDefinition["2XS"].rem,
+  },
+  mobile: {
+    height: spacingTokensDefinition.TabMobileHeight.rem,
+    itemGap: spacingTokensDefinition["3XS"].rem,
+  },
+  list: {
+    pill: {
+      desktop: {
+        gap: spacingTokensDefinition.XS.rem,
+      },
+      mobile: {
+        gap: spacingTokensDefinition["2XS"].rem,
+      },
+    },
+    underline: {
+      desktop: {
+        gap: spacingTokensDefinition.XL.rem,
+      },
+      mobile: {
+        gap: spacingTokensDefinition.L.rem,
+      },
+    },
+  },
+  pill: {
+    radius: spacingTokensDefinition.Pill.rem,
+    desktop: {
+      paddingX: spacingTokensDefinition.S.rem,
+    },
+    mobile: {
+      paddingX: spacingTokensDefinition.XS.rem,
+    },
+    selected: {
+      background: colorTokensDefinition.Inverse,
+      backgroundHover: colorTokensDefinition.InverseHover,
+      backgroundActive: colorTokensDefinition.InverseActive,
+      foreground: colorTokensDefinition.OnInverse,
+      focusRing: colorTokensDefinition.Inverse,
+    },
+    unselected: {
+      background: "transparent",
+      backgroundHover: colorTokensDefinition.SurfaceHover,
+      backgroundActive: colorTokensDefinition.SurfaceActive,
+      border: colorTokensDefinition.Outline,
+      borderHover: colorTokensDefinition.OutlineHover,
+      foreground: colorTokensDefinition.OnNeutral,
+      focusRing: colorTokensDefinition.Black,
+    },
+  },
+  underline: {
+    focusRadius: spacingTokensDefinition["3XS"].rem,
+    desktop: {
+      paddingBottom: spacingTokensDefinition.TabIndicator.rem,
+    },
+    mobile: {
+      paddingBottom: spacingTokensDefinition.TabIndicator.rem,
+    },
+    indicator: {
+      height: spacingTokensDefinition.TabIndicator.rem,
+      radius: spacingTokensDefinition.Pill.rem,
+      selected: colorTokensDefinition.Inverse,
+      unselectedInteractive: colorTokensDefinition.OutlineHover,
+    },
+    foreground: colorTokensDefinition.OnNeutral,
+    focusRing: colorTokensDefinition.Inverse,
+  },
+  badgeSlot: {
+    background: colorTokensDefinition.SurfaceHigh,
+    foreground: colorTokensDefinition.OnNeutral,
+    paddingY: spacingTokensDefinition["3XS"].rem,
+    paddingX: spacingTokensDefinition["2XS"].rem,
+    radius: spacingTokensDefinition.XS.rem,
   },
   panel: {
     paddingY: spacingTokensDefinition.L.rem,

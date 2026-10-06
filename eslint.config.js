@@ -26,6 +26,8 @@ export default defineConfig([
       '**/__docs__/**',
       '.storybook/**',
       '**/test-utils/**',
+      '**/TabsContext.tsx',
+      '**/Tabs.context.ts',
     ],
     rules: {
       'react-refresh/only-export-components': 'off',

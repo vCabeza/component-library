@@ -1,0 +1,14 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as TabStories from "./Tab.stories";
+
+<Meta of={TabStories} />
+
+# Tab
+
+Standalone raw `<button type="button" role="tab">` — always in the sequential tab order (`tabIndex={0}`) unless disabled or an explicit `tabIndex` is passed. Inside `<Tabs>`, every enabled tab stays Tab-key reachable; arrows / Home / End change selection from the focused tab.
+
+<Canvas of={TabStories.PillSelected} />
+
+<Controls />
+
+For composed usage see **Tabs** stories.

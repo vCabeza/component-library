@@ -20,8 +20,10 @@ describe("Figma token definitions", () => {
       SurfaceHover: "#F6F6FA",
       SurfaceActive: "#F1F1F7",
       Outline: "#D3D3DC",
+      OutlineHover: "#C4C5CF",
       OnNeutral: "#1B2134",
       OnInverse: "#FFFFFF",
+      Black: "#000000",
     });
   });
 
@@ -29,6 +31,7 @@ describe("Figma token definitions", () => {
     expect(spacingTokensDefinition).toEqual({
       "0": { px: 0, rem: "0" },
       "4XS": { px: 2, rem: "0.125rem" },
+      TabIndicator: { px: 3, rem: "0.1875rem" },
       "3XS": { px: 4, rem: "0.25rem" },
       "2XS": { px: 8, rem: "0.5rem" },
       XS: { px: 12, rem: "0.75rem" },
@@ -38,11 +41,15 @@ describe("Figma token definitions", () => {
       L: { px: 24, rem: "1.5rem" },
       BadgeDesktopHeight: { px: 26, rem: "1.625rem" },
       XL: { px: 32, rem: "2rem" },
+      TabMobileHeight: { px: 42, rem: "2.625rem" },
       "2XL": { px: 48, rem: "3rem" },
+      TabDesktopHeight: { px: 50, rem: "3.125rem" },
+      Pill: { px: 100, rem: "6.25rem" },
     });
     expect(spacingTokenOrder).toEqual([
       "0",
       "4XS",
+      "TabIndicator",
       "3XS",
       "2XS",
       "XS",
@@ -52,7 +59,10 @@ describe("Figma token definitions", () => {
       "L",
       "BadgeDesktopHeight",
       "XL",
+      "TabMobileHeight",
       "2XL",
+      "TabDesktopHeight",
+      "Pill",
     ]);
     expect(spacingCss("S")).toBe("1rem");
   });
@@ -72,7 +82,7 @@ describe("Figma token definitions", () => {
     });
   });
 
-  it("exposes fontWeight bold token for Badge (700)", () => {
+  it("exposes fontWeight bold token (700)", () => {
     expect(fontWeightTokensDefinition.bold).toBe(700);
   });
 });
